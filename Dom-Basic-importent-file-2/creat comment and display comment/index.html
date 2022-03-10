@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>creat a comment and add display with dom</title>
+</head>
+<body>
+    <section>
+        <div>
+            <h2>Add a mela manush</h2>
+            <div id='comment-container'>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quo sapiente dolorem id nihil ea explicabo hic iste ipsum, recusandae at officiis. Maxime iusto, illum enim sed mollitia porro minus accusamus!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio recusandae eum eos delectus veritatis ad officia neque nulla voluptas fugit quasi molestiae, quia expedita repudiandae! Quos maxime saepe animi consectetur.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, rem provident! Omnis tempora cupiditate expedita magnam quod accusantium sint iure quasi molestiae consequatur, quos consequuntur voluptatem animi eos fugit officiis.</p>
+            </div>
+            <div>
+                <textarea name ='' id='new-comment' cols='60' rows ='4'></textarea>
+                <br>
+                <button id='submit-comment'>post</button>
+            </div>
+        </div>
+    </section>
+    <script>
+        document.getElementById('submit-comment').addEventListener('click', function(){
+            //abr textarea
+            let commentBox = document.getElementById('new-comment');
+            //abr creat paragraph
+            let newComment = document.createElement('p');
+            newComment.innerText = commentBox.value;
+
+            //append comment
+            let commentContainer = document.getElementById('comment-container');
+            commentContainer.appendChild(newComment);
+            //area theke update ar por text remove
+             commentBox.value = '';
+        })
+    </script>
+</body>
+</html>

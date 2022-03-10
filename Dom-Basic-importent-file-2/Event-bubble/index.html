@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event bubble</title>
+</head>
+<body>
+    <section id="event-container">
+        <h2>Event Bubble use</h2>
+        <div id="list-container">
+            <h3>this is bubble</h3>
+            <ul>
+                <li class='item'>number one</li>
+                <li id='second-item'class='item'>number one</li>
+                <li class='item'>number one</li>
+                <li class='item'>number one</li>
+                <li class='item'>number one</li>
+            </ul>
+        </div>
+    </section>
+    <script>
+        //element click
+       document.getElementById('second-item').addEventListener('click', function(event){
+           console.log('second1 item clicked');
+          // event.stopPropagation(); // ata dile baki click parent show korbena
+          event.stopImmediatePropagation(); //ai element ar baki click gulo show krbena.
+
+       })
+       //jokhn aki element k r o click deoa hoy.tokhn oi element click korle sob click e show kore.jodi ami chai ami ogula dekbona sudhu akti click e dekhbo tokhn .immediate propagation use korte hoy.
+       document.getElementById('second-item').addEventListener('click', function(event){
+           console.log('second2 item clicked');
+
+       })
+       document.getElementById('second-item').addEventListener('click', function(event){
+           console.log('second3 item clicked');
+        
+
+       })
+       document.getElementById('second-item').addEventListener('click', function(event){
+           console.log('second4 item clicked');
+
+       })
+       //parent click
+       document.getElementById('list-container').addEventListener('click', function(){
+           console.log('ul clicked');
+       })
+
+       document.getElementById('event-container').addEventListener('click', function(){
+           console.log('main parent clicked');
+       })
+    </script>
+
+</body>
+</html>

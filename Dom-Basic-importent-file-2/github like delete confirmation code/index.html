@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>simple delete and github like delete confirmation code with DOM</title>
+</head>
+<body>
+    <section>
+        <h2>More Events</h2>
+        <div>
+            <h3 id='secret-info'>very very secret information</h3>
+            <button id='delete-btn'>click here</button>
+        </div>
+        <br>
+        <div>
+            <input id='delete-confirm' type ='text'>
+            <button>click here</button>
+        </div>
+        <br>
+        <div>
+            <input id='dlt-confirm' type ='text'>
+            <button disabled>click here</button>
+        </div>
+        <br>
+        <div>
+            <input id='confirm' type ='text'>
+            <button>click here</button>
+        </div>
+        <br>
+        <div>
+            <input id='keyup-confirm' type ='text'>
+            <button disabled>click here</button>
+        </div>
+        <br>
+        <div>
+            <input id='change-confirm' type ='text'>
+            <button disabled>click here</button>
+        </div>
+        <br>
+        <div>
+            <input id='special' type ='text'>
+            <button id='delete-button'disabled>click here</button>
+        </div>
+        <br>
+        <div>
+            <img id ='chomok'src="img/fst.jpg">
+        </div>
+    </section>
+    <script>
+        //for simple remove
+        document.getElementById('delete-btn').addEventListener('click', function(){
+            document.getElementById('secret-info').style.display = 'none';
+        })
+        //focus event
+        //jokhn e input a click krbe tokhn e bg color asbe
+        document.getElementById('delete-confirm').addEventListener('focus', function(){
+            document.body.style.backgroundColor = 'hotpink';
+        });
+        //blur event
+        //input click a jmn body te pink clr ase, thik temon blur dile body ar jkono ongso click korle lightblue hbe.
+        document.getElementById('delete-confirm').addEventListener('blur', function(){
+            document.body.style.backgroundColor = 'lightblue';
+        });
+        
+        //keydown event
+        document.getElementById('dlt-confirm').addEventListener('keydown', function(){
+            let deleteField = document.getElementById('dlt-confirm');
+            console.log(deleteField.value);
+        });
+
+        //keypress
+        document.getElementById('confirm').addEventListener('keypress', function(){
+            let field = document.getElementById('confirm');
+            console.log(field.value);
+        });
+
+        //keyup
+        document.getElementById('keyup-confirm').addEventListener('keyup', function(){
+            let field = document.getElementById('keyup-confirm');
+            console.log(field.value);
+        });
+
+        //change
+        document.getElementById('change-confirm').addEventListener('change', function(){
+            let field = document.getElementById('change-confirm');
+            console.log(field.value);
+        });
+        //akti headings k btn ar dara delete korte hbe. kintu akti input nite hbe,sei input a delete likhte hobe then btn ti active hobe. jotokkhon input a sudhu delete likhbena totokkhn click btn ti disabled thakbe.
+        document.getElementById('special').addEventListener('keyup', function(event){
+            let deleteBtn = document.getElementById('delete-button');
+            if(event.target.value == 'delete'){
+                deleteBtn.removeAttribute('disabled');
+            }
+            else{
+                deleteBtn.setAttribute('disabled',true);
+            }
+        });
+
+        //akti image k click korle img ti change hbe
+        document.getElementById('chomok').addEventListener('mouseenter', function(event){
+            let khel = document.getElementById('chomok');
+            khel.src = 'img/me.jpg';
+            //event.target.src = 'img/me.jpg';
+        });
+    </script>
+</body>
+</html>
